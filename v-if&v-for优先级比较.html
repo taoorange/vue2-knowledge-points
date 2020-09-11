@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="demo">
+    <!-- <p v-for="item in items" v-if="isTrue">{{item.name}}</p> -->
+    <template v-if="isTrue">
+      <p v-for="item in items">{{item.name}}</p>
+    </template>
+  </div>
+
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.7/vue.js"></script>
+<script>
+
+  // data数据
+  const data = {
+    items: [
+      { id: 1, name: '吃西瓜' },
+      { id: 2, name: '吃柠檬' }
+    ]
+  }
+
+
+  const app = new Vue({
+    el: '#demo',
+    data() {
+      return data
+    },
+    computed: {
+      isTrue() {
+        return this.items && this.items.length > 0
+      }
+    }
+  })
+
+
+  // console.log(app.$options.data)
+  console.log(app.$options.render)
+
+
+</script>
+
+</html>
